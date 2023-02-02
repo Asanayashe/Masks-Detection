@@ -5,6 +5,7 @@ WORKDIR /usr/src/app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY model_weights.pth .
+COPY main.py .
 
 CMD ["python", "main.py"]
