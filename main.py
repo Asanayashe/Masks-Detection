@@ -9,7 +9,7 @@ import torchvision.transforms as T
 if __name__ == "__main__":
     transforms = T.Compose([T.ToTensor()])
 
-    model = torchvision.models.detection.fasterrcnn_mobilenet_v3_large_fpn(pretrained=False)
+    model = torchvision.models.detection.fasterrcnn_mobilenet_v3_large_fpn()
     in_features = model.roi_heads.box_predictor.cls_score.in_features
     model.roi_heads.box_predictor = FastRCNNPredictor(in_features, 4)
     model.load_state_dict(torch.load('model_weights.pth', map_location=torch.device('cpu')))
